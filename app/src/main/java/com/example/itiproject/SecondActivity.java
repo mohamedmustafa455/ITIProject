@@ -46,7 +46,7 @@ public class SecondActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(ViewModledata.class);
         Thread thread = new Thread() {
             public void run() {
-                entityNote note = new entityNote(0, edtTitel.getText().toString(), edtBody.getText().toString(), "22/2/2022", "9:30");
+                entityNote note = new entityNote(0, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString(), "9:30");
                 viewModel.setNote(note);
             }
         };
@@ -70,7 +70,7 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (edtTitel.getText().toString() == "") {
+                if (edtTitel.getText().toString().isEmpty()) {
 
 
                     Toast.makeText(getApplicationContext(), "pleas add Title", Toast.LENGTH_LONG).show();
@@ -80,7 +80,7 @@ public class SecondActivity extends AppCompatActivity {
                     if (id == -1) {
                         thread.start();
                     } else {
-                        viewModel.updataNote(new entityNote(id, edtTitel.getText().toString(), edtBody.getText().toString(), "22/2/2022", "9:30"));
+                        viewModel.updataNote(new entityNote(id, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString(), "9:30"));
                     }
                     backIntent = new Intent(SecondActivity.this, MainActivity.class);
                     startActivity(backIntent);

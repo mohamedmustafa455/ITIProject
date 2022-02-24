@@ -57,19 +57,26 @@ public class ViewModledata extends AndroidViewModel {
 //        thread2.destroy();
 //
 // }
-    public void  updataNote(entityNote note){
-        dp.executer.execute(()->{
-            noteDao.updateNote(note);
-        });
-    }
-//    public void updataNote(entityNote note){
-//        Thread thread3 =new Thread(){
-//            public void run(){
-//                dp.noteD().updateNote(note);
-//            }
-//        };thread3.start();
-//        thread3.stop();
+//    public void  updataNote(entityNote note){
 //
-//     }
+//
+//        /**
+//         * step1: navigate to create note page
+//         * step2: pass current note to new note page ()
+//         */
+//
+//        dp.executer.execute(()->{
+//            noteDao.updateNote(note);
+//        });
+//    }
+    public void updataNote(entityNote note){
+        Thread thread3 =new Thread(){
+            public void run(){
+                dp.noteD().updateNote(note);
+            }
+        };thread3.start();
+
+
+     }
 
 }
