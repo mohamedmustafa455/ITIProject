@@ -9,7 +9,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:layout_margin="8dp"
         android:background="#2FE8DFDF"
         app:cardCornerRadius="12dp"
@@ -56,7 +56,7 @@
         <ImageButton
             android:id="@+id/btn_delet"
             android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_height="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_time"
             app:layout_constraintHorizontal_bias="0.516"
@@ -64,7 +64,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_title_name"
             app:layout_constraintVertical_bias="0.6"
             app:srcCompat="@drawable/ic_baseline_delete_forever_24"
-            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

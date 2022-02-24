@@ -1,12 +1,14 @@
 package com.example.itiproject;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.DiffUtil;
@@ -88,8 +90,15 @@ public class CustomAdapter extends ListAdapter<entityNote,CustomAdapter.ViewHold
           }
               });
     }
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    private String getCurrentDateAsString(){
+//        LocalDateTime date = LocalDateTime.now();
+//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//        return dtf.format(date);
+//    }
 
-   // @Override
+
+    // @Override
 //    public int getItemCount() {
 //        return 20;
 //    }

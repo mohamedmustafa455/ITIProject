@@ -26,33 +26,43 @@ public class ViewModledata extends AndroidViewModel {
         dp.noteD().insertTask(note);
     }
 
-
     public List<entityNote> getAllNote(){
         return dp.noteD().loadAllToDo();
     }
-//    //public List<String> getTitle(){
-//        return  dp.noteD().gitTitle();
-//    }
 
     public void deletNote(entityNote note){
-        Thread thread4=new Thread(){
-            public void run(){
-                dp.noteD().delete(note);
-            }
-        };
-        thread4.start();
-        thread4.destroy();
-
+        dp.executer.execute(()->{
+            noteDao.delete(note);
+        });
     }
-    public void updataNote(entityNote note){
-        Thread thread5 =new Thread(){
-            public void run(){
-                dp.noteD().updateNote(note);
-            }
-        };thread5.start();
-        thread5.stop();
 
-     }
+
+
+//    public void deletNote(entityNote note){
+//        Thread thread2=new Thread(){
+//            public void run(){
+//                dp.noteD().delete(note);
+//            }
+//        };
+//        thread2.start();
+//        thread2.destroy();
+//
+// }
+    public void  updataNote(entityNote note){
+        dp.executer.execute(()->{
+            noteDao.updateNote(note);
+        });
+    }
+//    public void updataNote(entityNote note){
+//        Thread thread3 =new Thread(){
+//            public void run(){
+//                dp.noteD().updateNote(note);
+//            }
+//        };thread3.start();
+//        thread3.stop();
+//
+//     }
+
 
 
 
