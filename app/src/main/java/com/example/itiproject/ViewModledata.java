@@ -29,7 +29,10 @@ public class ViewModledata extends AndroidViewModel {
     }
 
     public void setNote(entityNote note){
-        dp.noteD().insertTask(note);
+        dp.executer.execute(()->{
+            noteDao.insertTask(note);
+        });
+       // dp.noteD().insertTask(note);
     }
 
     public LiveData<List<entityNote>> getAllNote(){

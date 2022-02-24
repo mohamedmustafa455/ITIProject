@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">ITIProject</string>
+    <string name="app_name">Note App</string>
+    <string name="edt_headline">Title</string>
+    <string name="edt_content">Subject</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_delet" >Deled</string>
 </resources>

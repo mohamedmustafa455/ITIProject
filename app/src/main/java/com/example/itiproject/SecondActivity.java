@@ -41,28 +41,28 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-
+       //creat object from ViewModel to access to data base
         ViewModledata viewModel;
         viewModel = new ViewModelProvider(this).get(ViewModledata.class);
-        Thread thread = new Thread() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            public void run() {
-                entityNote note = new entityNote(0, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString());
-                viewModel.setNote(note);
-            }
-        };
 
+//        Thread thread = new Thread() {
+//            @RequiresApi(api = Build.VERSION_CODES.O)
+//            public void run() {
+//                entityNote note = new entityNote(0, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString());
+//                viewModel.setNote(note);
+//            }
+//        };
 
+          // to recovery Intent from custom adapter
         Intent getIntent = getIntent();
-
         int id = getIntent.getIntExtra("id", -1);
         String title = getIntent.getStringExtra("title");
         String body = getIntent.getStringExtra("body");
-
         if (id != -1) {
             get(title, body);
 
         }
+
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +78,8 @@ public class SecondActivity extends AppCompatActivity {
 
                 } else {
                     if (id == -1) {
-                        thread.start();
+                        entityNote note = new entityNote(0, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString());
+                        viewModel.setNote(note);
                     } else {
                         viewModel.updataNote(new entityNote(id, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString()));
                     }
@@ -98,6 +99,7 @@ public class SecondActivity extends AppCompatActivity {
         edtBody.setText(body);
     }
 
+    // to get current time and date
     @RequiresApi(api = Build.VERSION_CODES.O)
     private String getCurrentDateAsString() {
         LocalDateTime date = LocalDateTime.now();

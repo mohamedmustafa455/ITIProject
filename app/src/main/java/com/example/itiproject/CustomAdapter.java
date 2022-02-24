@@ -27,20 +27,13 @@ import java.util.List;
 public class CustomAdapter extends ListAdapter<entityNote,CustomAdapter.ViewHolder> {
 
     ViewModledata viewModel;
-    //List<String> TitleList;
+
     public CustomAdapter(@NonNull DiffUtil.ItemCallback<entityNote> differ,ViewModledata model) {
         super(differ);
         viewModel=model;
-//        this.TitleList = TitleList;
-    }
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemTodoBinding view=ItemTodoBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
-        return new ViewHolder(view);
     }
-
+        // DiffUtil class
     static class differCallback extends DiffUtil.ItemCallback<entityNote>{
 
         @Override
@@ -55,11 +48,22 @@ public class CustomAdapter extends ListAdapter<entityNote,CustomAdapter.ViewHold
     }
 
 
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        ItemTodoBinding view=ItemTodoBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        return new ViewHolder(view);
+    }
+
+
+
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-//the problem on click not retrev data
+
+        //retrn current item
         entityNote note = getItem(position);
-       //retrn current item
+
       holder.binding.tvTitleName.setText(note.title);
       holder.binding.tvDate.setText(note.date);
 
@@ -75,32 +79,25 @@ public class CustomAdapter extends ListAdapter<entityNote,CustomAdapter.ViewHold
       holder.binding.tvTitleName.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
+              //to hold current item
               entityNote noteCurrentItem=getItem(position);
 
+              //send the data that will be modified
               Intent intent=new Intent(v.getContext(),SecondActivity.class);
               intent.putExtra("id",noteCurrentItem.getId());
               intent.putExtra("title",noteCurrentItem.getTitle());
               intent.putExtra("body",noteCurrentItem.getBody());
               v.getContext().startActivity(intent);
 
-//              viewModel.updataNote(noteCurrentItem);
-
           }
               });
     }
-//    @RequiresApi(api = Build.VERSION_CODES.O)
-//    private String getCurrentDateAsString(){
-//        LocalDateTime date = LocalDateTime.now();
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        return dtf.format(date);
-//    }
-
 
     // @Override
 //    public int getItemCount() {
 //        return 20;
 //    }
-
+     //ViewHolder class with view binding
     public class ViewHolder extends RecyclerView.ViewHolder{
        ItemTodoBinding binding;
         public ViewHolder(@NonNull ItemTodoBinding binding) {

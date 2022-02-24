@@ -4,10 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/ITIProject/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/ITIProject/app/src/main/res/layout/activity_second.xml" value="0.22083333333333333" />
+        <entry key="..\:/ITIProject/app/src/main/res/layout/activity_second.xml" value="0.25" />
         <entry key="..\:/ITIProject/app/src/main/res/layout/add_new_to_do_fragment.xml" value="0.22083333333333333" />
         <entry key="..\:/ITIProject/app/src/main/res/layout/item_todo.xml" value="0.33" />
-        <entry key="..\:/Media/Documents/AndroidSudioProjectjects/naitve/ITIProject/app/src/main/res/layout/item_todo.xml" value="0.26197916666666665" />
       </map>
     </option>
   </component>
@@ -16,8 +15,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="SuppressionsComponent">
-    <option name="suppComments" value="[]" />
   </component>
 </project>
