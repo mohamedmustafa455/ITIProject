@@ -62,7 +62,6 @@ public class CustomAdapter extends ListAdapter<entityNote,CustomAdapter.ViewHold
        //retrn current item
       holder.binding.tvTitleName.setText(note.title);
       holder.binding.tvDate.setText(note.date);
-      holder.binding.tvTime.setText(note.time);
 
 
       holder.binding.btnDelet.setOnClickListener(new View.OnClickListener() {
@@ -82,8 +81,6 @@ public class CustomAdapter extends ListAdapter<entityNote,CustomAdapter.ViewHold
               intent.putExtra("id",noteCurrentItem.getId());
               intent.putExtra("title",noteCurrentItem.getTitle());
               intent.putExtra("body",noteCurrentItem.getBody());
-              intent.putExtra("date",noteCurrentItem.getDate());
-              intent.putExtra("time",noteCurrentItem.getTime());
               v.getContext().startActivity(intent);
 
 //              viewModel.updataNote(noteCurrentItem);

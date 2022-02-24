@@ -45,8 +45,9 @@ public class SecondActivity extends AppCompatActivity {
         ViewModledata viewModel;
         viewModel = new ViewModelProvider(this).get(ViewModledata.class);
         Thread thread = new Thread() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             public void run() {
-                entityNote note = new entityNote(0, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString(), "9:30");
+                entityNote note = new entityNote(0, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString());
                 viewModel.setNote(note);
             }
         };
@@ -57,8 +58,6 @@ public class SecondActivity extends AppCompatActivity {
         int id = getIntent.getIntExtra("id", -1);
         String title = getIntent.getStringExtra("title");
         String body = getIntent.getStringExtra("body");
-        String date = getIntent.getStringExtra("date");
-        String time = getIntent.getStringExtra("time");
 
         if (id != -1) {
             get(title, body);
@@ -67,6 +66,7 @@ public class SecondActivity extends AppCompatActivity {
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
 
@@ -80,7 +80,7 @@ public class SecondActivity extends AppCompatActivity {
                     if (id == -1) {
                         thread.start();
                     } else {
-                        viewModel.updataNote(new entityNote(id, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString(), "9:30"));
+                        viewModel.updataNote(new entityNote(id, edtTitel.getText().toString(), edtBody.getText().toString(), getCurrentDateAsString()));
                     }
                     backIntent = new Intent(SecondActivity.this, MainActivity.class);
                     startActivity(backIntent);

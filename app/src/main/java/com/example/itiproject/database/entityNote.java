@@ -10,14 +10,14 @@ public class entityNote {
     public String title;
     public String body;
     public String date;
-    public String time;
 
-    public entityNote(int id, String title, String body, String date, String time) {
+
+    public entityNote(int id, String title, String body, String date) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.date = date;
-        this.time = time;
+
     }
 
     public int getId() {
@@ -52,11 +52,5 @@ public class entityNote {
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
-    }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
 }
