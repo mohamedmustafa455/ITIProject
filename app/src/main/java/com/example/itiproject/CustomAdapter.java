@@ -1,6 +1,8 @@
 package com.example.itiproject;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,44 +54,39 @@ public class CustomAdapter extends ListAdapter<entityNote,CustomAdapter.ViewHold
         }
     }
 
-    //differ=AsyncListDiffer(this,differCallback);
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 //the problem on click not retrev data
+        entityNote note = getItem(position);
        //retrn current item
-      holder.binding.tvTitleName.setText(getItem(position).title);
-      holder.binding.tvDate.setText(getItem(position).date);
-      holder.binding.tvTime.setText(getItem(position).time);
+      holder.binding.tvTitleName.setText(note.title);
+      holder.binding.tvDate.setText(note.date);
+      holder.binding.tvTime.setText(note.time);
 
-//      Thread thread1=new Thread(){
-//          public void run(){
-//          }
-//      };
 
       holder.binding.btnDelet.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              entityNote noteCurrentItem=getItem(position);
-
+              entityNote noteCurrentItem=note;
               viewModel.deletNote(noteCurrentItem);
-
-              //update the recycller view againe
-
-
           }
       });
 
-//      Thread thread2=new Thread(){
-//          public void run(){
-//          }
-//      };
       holder.binding.tvTitleName.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
               entityNote noteCurrentItem=getItem(position);
 
-              viewModel.updataNote(noteCurrentItem);
+              Intent intent=new Intent(v.getContext(),SecondActivity.class);
+              intent.putExtra("id",noteCurrentItem.getId());
+              intent.putExtra("title",noteCurrentItem.getTitle());
+              intent.putExtra("body",noteCurrentItem.getBody());
+              intent.putExtra("date",noteCurrentItem.getDate());
+              intent.putExtra("time",noteCurrentItem.getTime());
+              v.getContext().startActivity(intent);
+
+//              viewModel.updataNote(noteCurrentItem);
 
           }
               });

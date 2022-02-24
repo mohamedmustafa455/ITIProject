@@ -12,8 +12,9 @@ public class entityNote {
     public String date;
     public String time;
 
-    public entityNote(String title, String body, String date, String time) {
+    public entityNote(int _id, String title, String body, String date, String time) {
         this.title = title;
+        this.id=_id;
         this.body = body;
         this.date = date;
         this.time = time;
