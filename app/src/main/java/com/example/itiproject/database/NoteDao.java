@@ -1,5 +1,6 @@
 package com.example.itiproject.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -25,10 +26,10 @@ public interface NoteDao {
     void updateNote(entityNote note);
 
     @Delete
-    void delete(entityNote note);
+    void  delete(entityNote note);
 
     @Query("SELECT * FROM entityNote")
-     List<entityNote> loadAllToDo() ;
+    LiveData<List<entityNote>> loadAllToDo() ;
 
 
 

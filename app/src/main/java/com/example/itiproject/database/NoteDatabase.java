@@ -22,17 +22,17 @@ public abstract class NoteDatabase extends RoomDatabase {
         if(instanc==null){
             instanc= Room.databaseBuilder(cont.getApplicationContext()
                     ,NoteDatabase.class,"Note")
-                    .fallbackToDestructiveMigration().addCallback(callback)
+                    .fallbackToDestructiveMigration()//.addCallback(callback)
                     .build();
             //instanc.noteD().insertTask(new entityNote("ITI Project"," APP","22/2/2022","04:00"));
         }
         return instanc;
     }
-    private static final RoomDatabase.Callback callback=new RoomDatabase.Callback(){
-        @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-        }
-    };
+//    private static final RoomDatabase.Callback callback=new RoomDatabase.Callback(){
+//        @Override
+//        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+//            super.onCreate(db);
+//        }
+//    };
 
 }

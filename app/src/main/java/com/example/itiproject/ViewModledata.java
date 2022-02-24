@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import com.example.itiproject.database.NoteDao;
 import com.example.itiproject.database.NoteDatabase;
@@ -11,10 +12,15 @@ import com.example.itiproject.database.entityNote;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.subjects.ReplaySubject;
+
 public class ViewModledata extends AndroidViewModel {
 
     NoteDatabase dp;
     public NoteDao noteDao;
+
 
     public ViewModledata(@NonNull Application application) {
         super(application);
@@ -26,15 +32,18 @@ public class ViewModledata extends AndroidViewModel {
         dp.noteD().insertTask(note);
     }
 
-    public List<entityNote> getAllNote(){
+    public LiveData<List<entityNote>> getAllNote(){
         return dp.noteD().loadAllToDo();
     }
+
 
     public void deletNote(entityNote note){
         dp.executer.execute(()->{
             noteDao.delete(note);
         });
     }
+
+
 
 
 
@@ -62,10 +71,5 @@ public class ViewModledata extends AndroidViewModel {
 //        thread3.stop();
 //
 //     }
-
-
-
-
-
 
 }

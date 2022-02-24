@@ -71,7 +71,11 @@ public class CustomAdapter extends ListAdapter<entityNote,CustomAdapter.ViewHold
           @Override
           public void onClick(View v) {
               entityNote noteCurrentItem=getItem(position);
+
               viewModel.deletNote(noteCurrentItem);
+
+              //update the recycller view againe
+
 
           }
       });
